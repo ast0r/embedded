@@ -1,20 +1,18 @@
 //
-//  ViewController.swift
+//  DetailViewController.swift
 //  embedded
 //
-//  Created by Pavel Ivanov on 12/1/19.
+//  Created by Pavel Ivanov on 12/2/19.
 //  Copyright © 2019 Pavel Ivanov. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
 }
-
