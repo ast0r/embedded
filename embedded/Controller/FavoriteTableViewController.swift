@@ -16,11 +16,13 @@ class FavoriteTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         favoriteUsers = DataWork.fetchAllData()
         self.tableView.reloadData()
-        
     }
+    
 
     // MARK: - Table view data source
 

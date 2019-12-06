@@ -11,8 +11,7 @@ import CoreData
 import UIKit
 
 class DataWork {
-    
-  class func createData(newUser: User) {
+    class func createData(newUser: User) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
@@ -26,6 +25,25 @@ class DataWork {
         user.setValue(newUser.first_name, forKey: "first_name")
         user.setValue(newUser.last_name, forKey: "last_name")
         user.setValue(newUser.email, forKey: "email")
+       
+        //------
+//        guard let imageString = newUser.avatar else { return }
+//        Alamofire.request(imageString).responseImage { response in
+//            //debugPrint(response)
+//
+//            print(response.request ?? " ")
+//            print(response.response ?? " ")
+//            debugPrint(response.result)
+//
+//            if let image = response.result.value {
+//                print("image downloaded: \(image)")
+//                let imageData = image.pngData()
+//                user.setValue(imageData, forKey: "avatar")
+//            }
+//        }
+        //--------
+    
+    
         user.setValue(newUser.avatar, forKey: "avatar")
         
         do {
@@ -110,16 +128,23 @@ class DataWork {
     
   class func converFromNsToUser(nsUsers: [NSManagedObject]) -> [User] {
         
-        var users = [User]()
-        
+    var users: [User] = []
         for item in nsUsers {
             
-            let user = User()
+            var user = User()
             user.id = item.value(forKey: "id") as! Int?
             user.first_name = item.value(forKey: "first_name") as! String?
             user.last_name = item.value(forKey: "last_name") as! String?
             user.email = item.value(forKey: "email") as! String?
-            user.avatar = item.value(forKey: "email") as! String?
+            //------------------------
+            //get image from core data
+            //let image = item.value(forKey:"avatar") as! NSData
+            //fetchedImage.append(UIImage(data: image)!)
+            
+            //condert nsdata to string
+            //user.avatar = String(data: image as Data, encoding: .utf8)
+            //---------
+            user.avatar = item.value(forKey: "avatar") as! String?
             
             users.append(user)
         }
@@ -129,3 +154,12 @@ class DataWork {
     }
     
 }
+
+//extension String {
+//    func toImage() -> UIImage? {
+//        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
+//            return UIImage(data: data)
+//        }
+//        return nil
+//    }
+//}

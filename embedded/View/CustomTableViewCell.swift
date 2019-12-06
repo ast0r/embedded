@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
  protocol CustomTableViewCellDelegate {
     
@@ -55,6 +57,12 @@ class CustomTableViewCell: UITableViewCell {
     //MARK: - Init Cell
     func initCell(user: User) {
         
+        if DataWork.checkConsistUser(userId: user.id!) {
+            favorite.backgroundColor = .green
+        } else {
+            favorite.backgroundColor = .none
+        }
+        
         guard let first_name = user.first_name else { return }
         guard let last_name = user.last_name else { return }
         
@@ -62,10 +70,28 @@ class CustomTableViewCell: UITableViewCell {
         nameLabel.text = name
         detailLabel.text = user.email
         
-        if DataWork.checkConsistUser(userId: user.id!) {
-            favorite.backgroundColor = .green
-        } else {
-            favorite.backgroundColor = .none
+        guard let imageUrl = getImageUrl(urlString: user.avatar) else {return}
+        DispatchQueue.main.async {
+            self.photoImage.af_setImage(withURL: imageUrl)
         }
     }
+    
+    func getImageUrl(urlString: String?) -> URL? {
+        
+        if let imageUrlString = urlString {
+            let urlImage = URL(string: imageUrlString)
+            return urlImage
+        }
+        return nil        
+    }
+
 }
+
+//extension String {
+//    func toImage() -> UIImage? {
+//        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
+//            return UIImage(data: data)
+//        }
+//        return nil
+//    }
+//}

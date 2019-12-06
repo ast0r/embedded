@@ -9,12 +9,10 @@
 import Foundation
 
 struct ItemModel:Decodable {
-    
     let data: [User]
 }
 
-class User:Decodable {
-    
+struct User:Decodable {
     var id: Int?
     var email: String?
     var first_name: String?
