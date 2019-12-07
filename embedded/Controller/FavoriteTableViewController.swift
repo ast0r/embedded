@@ -39,17 +39,14 @@ class FavoriteTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.getIdentifier(), for: indexPath) as? CustomTableViewCell {
-            
             let user = favoriteUsers[indexPath.row]
             cell.initCell(user: user)
             cell.delegate = self
             //cell.favorite.backgroundColor = .green
             return cell
         }
-
         return UITableViewCell()
     }
-
 }
 
  //MARK: -CustomTableViewCellDelegate

@@ -57,7 +57,6 @@ class CustomTableViewCell: UITableViewCell {
         } else {
             delegate?.didAddFavorite(idCell: indexPath)
             print("add index \(indexPath.row) \(indexPath.section)")
-            //favorite.backgroundColor = .green
             let imageFill = UIImage(systemName: "star.fill")
             favorite.setImage(imageFill, for: .normal)
             isChecked = true
@@ -66,15 +65,12 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     //MARK: - Init Cell
-    func initCell(user: User) {
-        
+    func initCell(user: User) {        
         if DataWork.checkConsistUser(userId: user.id!) {
-            //favorite.backgroundColor = .green
             let imageFill = UIImage(systemName: "star.fill")
             favorite.setImage(imageFill, for: .normal)
             isChecked = true
         } else {
-            //favorite.backgroundColor = .none
             let imageNotFill = UIImage(systemName: "star")
             favorite.setImage(imageNotFill, for: .normal)
             isChecked = false
@@ -94,21 +90,10 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     func getImageUrl(urlString: String?) -> URL? {
-        
         if let imageUrlString = urlString {
             let urlImage = URL(string: imageUrlString)
             return urlImage
         }
         return nil        
     }
-
 }
-
-//extension String {
-//    func toImage() -> UIImage? {
-//        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
-//            return UIImage(data: data)
-//        }
-//        return nil
-//    }
-//}

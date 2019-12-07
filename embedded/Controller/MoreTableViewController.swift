@@ -74,7 +74,6 @@ extension MoreTableViewController: CustomTableViewCellDelegate {
     }
     
     func didAddFavorite(idCell: IndexPath) {
-        
         let user = itemArray[idCell.row]
         DataWork.createData(newUser: user)
     }
