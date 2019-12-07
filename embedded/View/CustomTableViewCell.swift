@@ -24,8 +24,10 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var favorite: UIButton!
     
+    
     //MARK: - Variable
-    var delegate: CustomTableViewCellDelegate?    
+    var delegate: CustomTableViewCellDelegate?
+    var isChecked = false
     
     class func getIdentifier() -> String {
         return "MoreCell"
@@ -35,22 +37,31 @@ class CustomTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        
     }
     
     //MARK: - Action
     @IBAction func favorite(_ sender: UIButton) {
         
+        //get indexPath from tableView for cell
         let view = self.superview as? UITableView
         guard let indexPath = view?.indexPath(for: self)else {return}
         
-        if favorite.backgroundColor == .green {
+        if isChecked == true {
             delegate?.didRemoveFavorite(idCell: indexPath)
             print("remove index \(indexPath.row) \(indexPath.section)")
-            favorite.backgroundColor = .none
+            let imageNotFill = UIImage(systemName: "star")
+            favorite.setImage(imageNotFill, for: .normal)
+            isChecked = false
+            
         } else {
             delegate?.didAddFavorite(idCell: indexPath)
             print("add index \(indexPath.row) \(indexPath.section)")
-            favorite.backgroundColor = .green
+            //favorite.backgroundColor = .green
+            let imageFill = UIImage(systemName: "star.fill")
+            favorite.setImage(imageFill, for: .normal)
+            isChecked = true
+            
         }
     }
     
@@ -58,9 +69,15 @@ class CustomTableViewCell: UITableViewCell {
     func initCell(user: User) {
         
         if DataWork.checkConsistUser(userId: user.id!) {
-            favorite.backgroundColor = .green
+            //favorite.backgroundColor = .green
+            let imageFill = UIImage(systemName: "star.fill")
+            favorite.setImage(imageFill, for: .normal)
+            isChecked = true
         } else {
-            favorite.backgroundColor = .none
+            //favorite.backgroundColor = .none
+            let imageNotFill = UIImage(systemName: "star")
+            favorite.setImage(imageNotFill, for: .normal)
+            isChecked = false
         }
         
         guard let first_name = user.first_name else { return }

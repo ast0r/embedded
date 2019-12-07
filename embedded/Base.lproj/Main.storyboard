@@ -14,13 +14,62 @@
                     <view key="view" contentMode="scaleToFill" id="xz8-Za-caK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultphoto_2x" translatesAutoresizingMaskIntoConstraints="NO" id="QiQ-co-hgE">
+                                <rect key="frame" x="0.0" y="20" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QiQ-co-hgE" secondAttribute="height" multiplier="343:183" id="oOH-oL-xdu"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1E-Ec-Stb">
+                                <rect key="frame" x="16" y="243" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.20000000000000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nuz-jO-s9J">
+                                <rect key="frame" x="16" y="295" width="343" height="173"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoT-05-mlx">
+                                <rect key="frame" x="299" y="20" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zoT-05-mlx" secondAttribute="height" multiplier="1:1" id="6pP-6n-qIX"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="MdW-ck-Dkw"/>
+                                    <constraint firstAttribute="height" constant="60" id="ion-m1-VY3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" image="star" catalog="system"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QiQ-co-hgE" firstAttribute="leading" secondItem="xz8-Za-caK" secondAttribute="leading" id="0de-jI-ABd"/>
+                            <constraint firstItem="Nuz-jO-s9J" firstAttribute="leading" secondItem="n1E-Ec-Stb" secondAttribute="leading" id="16M-2z-mFm"/>
+                            <constraint firstItem="QiQ-co-hgE" firstAttribute="top" secondItem="zoT-05-mlx" secondAttribute="bottom" constant="-60" id="NHv-7k-qwx"/>
+                            <constraint firstItem="zoT-05-mlx" firstAttribute="top" secondItem="QiQ-co-hgE" secondAttribute="top" id="P3F-Kz-1n6"/>
+                            <constraint firstItem="n1E-Ec-Stb" firstAttribute="leading" secondItem="6AM-Kc-IdK" secondAttribute="leading" constant="16" id="R2C-QI-TxS"/>
+                            <constraint firstItem="QiQ-co-hgE" firstAttribute="centerX" secondItem="6AM-Kc-IdK" secondAttribute="centerX" id="SfK-x2-Vkp"/>
+                            <constraint firstItem="QiQ-co-hgE" firstAttribute="top" secondItem="6AM-Kc-IdK" secondAttribute="top" constant="20" id="T5B-xf-33p"/>
+                            <constraint firstItem="Nuz-jO-s9J" firstAttribute="trailing" secondItem="n1E-Ec-Stb" secondAttribute="trailing" id="ToF-qg-rPs"/>
+                            <constraint firstItem="Nuz-jO-s9J" firstAttribute="top" secondItem="n1E-Ec-Stb" secondAttribute="bottom" constant="22" id="fAY-VJ-UKH"/>
+                            <constraint firstItem="6AM-Kc-IdK" firstAttribute="trailing" secondItem="n1E-Ec-Stb" secondAttribute="trailing" constant="16" id="lz2-Y2-B8B"/>
+                            <constraint firstAttribute="trailing" secondItem="QiQ-co-hgE" secondAttribute="trailing" id="mUa-5b-d7a"/>
+                            <constraint firstItem="6AM-Kc-IdK" firstAttribute="bottom" secondItem="Nuz-jO-s9J" secondAttribute="bottom" constant="199" id="pHf-bN-qwf"/>
+                            <constraint firstItem="zoT-05-mlx" firstAttribute="leading" secondItem="QiQ-co-hgE" secondAttribute="trailing" constant="-76" id="sBy-i9-ZDh"/>
+                            <constraint firstItem="n1E-Ec-Stb" firstAttribute="top" secondItem="QiQ-co-hgE" secondAttribute="bottom" constant="23" id="yD4-33-IDh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6AM-Kc-IdK"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJg-TB-yCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="2411"/>
+            <point key="canvasLocation" x="661.60000000000002" y="2410.344827586207"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Cge-nu-DN8">
@@ -44,11 +93,11 @@
             </objects>
             <point key="canvasLocation" x="662" y="109"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--News-->
         <scene sceneID="QIF-Y8-mLc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v0m-hF-3fh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="GMh-Fw-1rI"/>
+                    <tabBarItem key="tabBarItem" title="News" image="text.alignleft" catalog="system" id="GMh-Fw-1rI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="odu-uO-HRo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -63,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="-74" y="885"/>
         </scene>
-        <!--More Table View Controller-->
+        <!--New-->
         <scene sceneID="T9z-vO-Rg6">
             <objects>
-                <tableViewController id="XNZ-dG-hsb" customClass="MoreTableViewController" customModule="embedded" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="New" id="XNZ-dG-hsb" customClass="MoreTableViewController" customModule="embedded" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dNd-PU-v83">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,10 +147,16 @@
                                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYW-jF-9CM">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYW-jF-9CM">
                                             <rect key="frame" x="303" y="11" width="56" height="56"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal" image="star"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="tintColor" red="0.81960784310000001" green="0.20000000000000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" image="star" catalog="system">
+                                                <color key="titleColor" red="0.81960784310000001" green="0.20000000000000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <state key="selected" image="star.fill" catalog="system">
+                                                <color key="titleColor" red="0.81960784310000001" green="0.20000000000000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="favorite:" destination="9yF-HR-1ru" eventType="touchUpInside" id="X3b-JP-beB"/>
                                             </connections>
@@ -139,7 +194,7 @@
                             <outlet property="delegate" destination="XNZ-dG-hsb" id="H4t-hq-TRW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="bZF-E4-5qi"/>
+                    <navigationItem key="navigationItem" title="New" id="bZF-E4-5qi"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQM-Dh-oRD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -164,10 +219,10 @@
             </objects>
             <point key="canvasLocation" x="1376.8" y="884.70764617691157"/>
         </scene>
-        <!--Favorite Table View Controller-->
+        <!--Favorite-->
         <scene sceneID="Gdj-bt-Mra">
             <objects>
-                <tableViewController id="Frd-jm-ZWB" customClass="FavoriteTableViewController" customModule="embedded" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Favorite" id="Frd-jm-ZWB" customClass="FavoriteTableViewController" customModule="embedded" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wlu-gn-v3u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,10 +254,10 @@
                                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkE-Hk-GqG">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkE-Hk-GqG">
                                             <rect key="frame" x="303" y="11" width="56" height="56"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal" image="star"/>
+                                            <color key="tintColor" red="0.81960784310000001" green="0.20000000000000001" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" image="star" catalog="system"/>
                                             <connections>
                                                 <action selector="favorite:" destination="CUd-te-BpL" eventType="touchUpInside" id="Vhp-U6-400"/>
                                                 <action selector="tapButton:" destination="Fbk-Z4-eVU" eventType="touchUpInside" id="Jbq-aI-HvB"/>
@@ -241,7 +296,7 @@
                             <outlet property="delegate" destination="Frd-jm-ZWB" id="GrH-26-pg7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Edh-bx-7yL"/>
+                    <navigationItem key="navigationItem" title="Favorite" id="Edh-bx-7yL"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WGY-u9-4lj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Fbk-Z4-eVU" userLabel="Exit" sceneMemberID="exit"/>
@@ -251,6 +306,8 @@
     </scenes>
     <resources>
         <image name="defaultphoto_2x" width="640" height="640"/>
-        <image name="star" width="50" height="50"/>
+        <image name="star" catalog="system" width="64" height="58"/>
+        <image name="star.fill" catalog="system" width="64" height="58"/>
+        <image name="text.alignleft" catalog="system" width="64" height="50"/>
     </resources>
 </document>
