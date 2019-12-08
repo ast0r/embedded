@@ -57,7 +57,17 @@ class MoreTableViewController: UITableViewController {
         }
         return UITableViewCell()
     }
-}
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let detailViewController = storyboard.instantiateViewController(identifier: "DetailStoryboard") as? DetailViewController else { return }
+        detailViewController.user = itemArray[indexPath.row]
+            
+            show(detailViewController, sender: nil)
+        }
+    }
+
 
 //MARK: - CustomTableViewCellDelegate
 

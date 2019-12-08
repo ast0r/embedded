@@ -83,17 +83,17 @@ class CustomTableViewCell: UITableViewCell {
         nameLabel.text = name
         detailLabel.text = user.email
         
-        guard let imageUrl = getImageUrl(urlString: user.avatar) else {return}
+        guard let imageUrl = DataWork.getImageUrl(urlString: user.avatar) else {return}
         DispatchQueue.main.async {
             self.photoImage.af_setImage(withURL: imageUrl)
         }
     }
     
-    func getImageUrl(urlString: String?) -> URL? {
-        if let imageUrlString = urlString {
-            let urlImage = URL(string: imageUrlString)
-            return urlImage
-        }
-        return nil        
-    }
+//    func getImageUrl(urlString: String?) -> URL? {
+//        if let imageUrlString = urlString {
+//            let urlImage = URL(string: imageUrlString)
+//            return urlImage
+//        }
+//        return nil        
+//    }
 }

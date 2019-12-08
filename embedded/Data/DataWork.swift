@@ -119,4 +119,12 @@ class DataWork {
         }
     return users
     }
+    
+  class func getImageUrl(urlString: String?) -> URL? {
+        if let imageUrlString = urlString {
+            let urlImage = URL(string: imageUrlString)
+            return urlImage
+        }
+        return nil
+    }
 }
