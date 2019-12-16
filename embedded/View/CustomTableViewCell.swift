@@ -10,10 +10,12 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
- protocol CustomTableViewCellDelegate {
-    
-     func didAddFavorite(idCell: IndexPath)
-     func didRemoveFavorite(idCell: IndexPath)
+protocol saveUserToFavoriteDelegate {
+    func saveUserToFavorite(idCell: IndexPath)
+}
+
+protocol removeUserFromFavoriteDelegate {
+    func removeUserFromFavorite(idCell: IndexPath)
 }
 
 class CustomTableViewCell: UITableViewCell {
@@ -26,18 +28,12 @@ class CustomTableViewCell: UITableViewCell {
     
     
     //MARK: - Variable
-    var delegate: CustomTableViewCellDelegate?
+    var saveDelegate: saveUserToFavoriteDelegate?
+    var removeDelegate: removeUserFromFavoriteDelegate?
     var isChecked = false
     
     class func getIdentifier() -> String {
         return "MoreCell"
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-        
     }
     
     //MARK: - Action
@@ -45,18 +41,16 @@ class CustomTableViewCell: UITableViewCell {
         
         //get indexPath from tableView for cell
         let view = self.superview as? UITableView
-        guard let indexPath = view?.indexPath(for: self)else {return}
+        guard let indexPath = view?.indexPath(for: self) else {return}
         
-        if isChecked == true {
-            delegate?.didRemoveFavorite(idCell: indexPath)
-            print("remove index \(indexPath.row) \(indexPath.section)")
+        if isChecked {
+            removeDelegate?.removeUserFromFavorite(idCell: indexPath)
             let imageNotFill = UIImage(systemName: "star")
             favorite.setImage(imageNotFill, for: .normal)
             isChecked = false
             
         } else {
-            delegate?.didAddFavorite(idCell: indexPath)
-            print("add index \(indexPath.row) \(indexPath.section)")
+            saveDelegate?.saveUserToFavorite(idCell: indexPath)
             let imageFill = UIImage(systemName: "star.fill")
             favorite.setImage(imageFill, for: .normal)
             isChecked = true
@@ -66,7 +60,7 @@ class CustomTableViewCell: UITableViewCell {
     
     //MARK: - Init Cell
     func initCell(user: User) {        
-        if DataWork.checkConsistUser(userId: user.id!) {
+        if DataWork.checkConsistUser(userId: user.id) {
             let imageFill = UIImage(systemName: "star.fill")
             favorite.setImage(imageFill, for: .normal)
             isChecked = true
@@ -88,12 +82,4 @@ class CustomTableViewCell: UITableViewCell {
             self.photoImage.af_setImage(withURL: imageUrl)
         }
     }
-    
-//    func getImageUrl(urlString: String?) -> URL? {
-//        if let imageUrlString = urlString {
-//            let urlImage = URL(string: imageUrlString)
-//            return urlImage
-//        }
-//        return nil        
-//    }
 }

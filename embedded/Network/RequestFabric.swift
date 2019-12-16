@@ -14,7 +14,6 @@ let serverPath = "/api/users/"
 class RequestFabric {
     
     class func getUserUrl(itemCount: String) -> URL? {
-        
         let params = ["per_page" : itemCount]
         var components = URLComponents()
         components.scheme = "https"
@@ -22,8 +21,7 @@ class RequestFabric {
         components.path = serverPath
         components.queryItems = params.map {
             URLQueryItem(name: $0, value: $1 as String)
-        }
-        
+        }        
         return components.url
     }
 }

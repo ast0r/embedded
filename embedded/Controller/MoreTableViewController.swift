@@ -9,13 +9,12 @@
 import UIKit
 
 class MoreTableViewController: UITableViewController {
-
+    
     //MARK: - Variable
     var itemArray = [User]()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         fetch()        
     }
     
@@ -28,62 +27,50 @@ class MoreTableViewController: UITableViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
     }
     
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {       
         return itemArray.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.getIdentifier(), for: indexPath) as? CustomTableViewCell {
             
-            cell.delegate = self
+            cell.saveDelegate = self
+            cell.removeDelegate = self
             let user = itemArray[indexPath.row]
             cell.initCell(user: user)
-            
             return cell
         }
         return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let detailViewController = storyboard.instantiateViewController(identifier: "DetailStoryboard") as? DetailViewController else { return }
+        guard let detailViewController = storyboard.instantiateViewController(identifier: "DetailStoryboard") as? DetailViewController else { return }
         detailViewController.user = itemArray[indexPath.row]
-            
-            show(detailViewController, sender: nil)
-        }
+        show(detailViewController, sender: nil)
     }
-
+}
 
 //MARK: - CustomTableViewCellDelegate
-
-extension MoreTableViewController: CustomTableViewCellDelegate {
+extension MoreTableViewController: removeUserFromFavoriteDelegate, saveUserToFavoriteDelegate {
     
-    func didRemoveFavorite(idCell: IndexPath) {
-        print("did tap button favorite \(idCell.row)")
-                
+    func removeUserFromFavorite(idCell: IndexPath) {
         let user = itemArray[idCell.row]
-        DataWork.deleteUser(userId: user.id!)
-        tableView.reloadData()
-        
-        print("remove \(user.id!) \(user.first_name!)")
+        DataWork.deleteUser(userId: user.id)
+        tableView.reloadData()        
     }
     
-    func didAddFavorite(idCell: IndexPath) {
+    func saveUserToFavorite(idCell: IndexPath) {
         let user = itemArray[idCell.row]
         DataWork.createData(newUser: user)
     }

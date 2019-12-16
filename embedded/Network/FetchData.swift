@@ -10,19 +10,15 @@ import Foundation
 
 //MARK: - Get data From Network
 class FetchData {
-    class func fetch(completion: @escaping(ItemModel)->()) {
-        
+    class func fetch(completion: @escaping(ItemModel)->()) {        
         guard let url = RequestFabric.getUserUrl(itemCount: "12") else { return }
-        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error)
                 return
             }
-            
             guard let data = data else { return }
             guard let users = try? JSONDecoder().decode(ItemModel.self, from: data) else { return }
-            
             completion(users)            
         }
         task.resume()

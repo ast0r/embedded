@@ -1,0 +1,6 @@
+framework module Pods_embedded {
+  umbrella header "Pods-embedded-umbrella.h"
+
+  export *
+  module * { export * }
+}
